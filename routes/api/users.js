@@ -40,7 +40,7 @@ router.post("/register", (req, res) => {
                     newUser.password = hash;
                     newUser
                         .save()
-                        .then(user => res.json(user))
+                        .then(user => res.status(200).json({ msg: "Succesfully Registered" }))
                         .catch(err => console.log(err));
                 });
             });
@@ -85,8 +85,9 @@ router.post("/login", (req, res) => {
                         expiresIn: 31556926 //expiration time in seconds
                     },
                     (err, token) => {
-                        res.json({
+                        res.status(200).json({
                             success: true,
+                            msg: "User successfully logged in",
                             token: "Bearer " + token
                         });
                     }
