@@ -1,4 +1,4 @@
-# Authorize
+# AuthService
 
 A fullstack app using MERN stack:
 
@@ -33,6 +33,7 @@ to login/ authorize the user.
 **Database:** MongoDb \
 **Frontend:** React JS \
 **State Management:** Redux
+
 <!---**Container:** Docker, Docker-Compose \ -->
 
 </br></br>
@@ -46,12 +47,48 @@ to login/ authorize the user.
 #### Register a new user
 
 ```http
-  POST /register
+  POST api/users/register
+```
+
+| Parameter         | Type     | Description                        |
+| :---------------- | :------- | :--------------------------------- |
+| `username`        | `string` | **Required**. username to register |
+| `email`           | `string` | **Required**. email id of user     |
+| `password`        | `string` | **Required**. password of the user |
+| `confirmPassword` | `string` | **Required**. password of the user |
+
+</br>
+
+#### Sample Request
+
+```json
+{
+  "name": "Rohit Kumar",
+  "email": "rohit1@autho.com",
+  "password": "rohit_password1 ",
+  "confirmPassword": "rohit_password1"
+}
+```
+
+#### Sample Response
+
+```json
+{
+  "msg": "Succesfully Registered"
+}
+```
+
+</br>
+
+#### Login a user
+
+```http
+  POST api/users/login
 ```
 
 | Parameter  | Type     | Description                        |
 | :--------- | :------- | :--------------------------------- |
-| `username` | `string` | **Required**. username to register |
+| `email`    | `string` | **Required**. email id of user     |
 | `password` | `string` | **Required**. password of the user |
 
 </br>
@@ -60,8 +97,8 @@ to login/ authorize the user.
 
 ```json
 {
-  "username": "user2",
-  "password": "user_password"
+  "email": "rohit1@autho.com",
+  "password": "rohit_password1 "
 }
 ```
 
@@ -69,103 +106,13 @@ to login/ authorize the user.
 
 ```json
 {
-  "msg": "Sign up Successful",
-  "results": {
-    "similarity": null
-  },
-  "status": 200,
-  "userInformation": {
-    "currentTokens": 6,
-    "username": "user2"
-  }
+  "success": true,
+  "msg": "User successfully logged in",
+  "token": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMjMzZDMxNTUxNDc3ZmFiYjBlNzZhNCIsIm5hbWUiOiJSb2hpdCBLdW1hciIsImlhdCI6MTY0NjQ4MjM1NCwiZXhwIjoxNjc4MDM5MjgwfQ.N8BUmTS2w82E3ORX4n9tv21r8AT9TT5I3I9-K6KqzSM"
 }
 ```
 
 </br>
-
-#### Detect similarity between two texts
-
-```http
-  POST /detect
-```
-
-| Parameter  | Type     | Description                             |
-| :--------- | :------- | :-------------------------------------- |
-| `username` | `string` | **Required**. username to validate user |
-| `password` | `string` | **Required**. password of the user      |
-| `text1`    | `string` | **Required**. Sentence1                 |
-| `textt2`   | `string` | **Required**. Sentence2                 |
-
-</br>
-
-#### Sample Request
-
-```json
-{
-  "username": "user2",
-  "password": "user_password",
-  "text1": "you have ",
-  "text2": "You My Have "
-}
-```
-
-#### Sample Response
-
-```json
-{
-  "msg": "Success",
-  "results": {
-    "similarity": 53.80624762110769
-  },
-  "status": 200,
-  "userInformation": {
-    "currentTokens": 5,
-    "username": "user2"
-  }
-}
-```
-
-</br>
-
-#### Refill the user specific tokens
-
-```http
-  POST /refill
-```
-
-| Parameter  | Type      | Description                               |
-| :--------- | :-------- | :---------------------------------------- |
-| `username` | `string`  | **Required**. username to validate user   |
-| `admin_pw` | `string`  | **Required**. admin password              |
-| `refill`   | `integer` | **Required**. the number of tokens to add |
-
-</br>
-
-#### Sample Request
-
-```json
-{
-  "username": "user2",
-  "admin_pw": "admin_password",
-  "refill": 10
-}
-```
-
-#### Sample Response
-
-```json
-{
-  "msg": "Success",
-  "results": {
-    "similarity": null
-  },
-  "status": 200,
-  "userInformation": {
-    "currentTokens": 15,
-    "username": "user2"
-  }
-}
-```
 
 </br>
 
@@ -185,7 +132,7 @@ to login/ authorize the user.
 - [x] Clone the repository
 
 ```bash
-  git clone git@github.com:stenzr/SimilarityService.git
+  git clone git@github.com:stenzr/authService.git
 ```
 
 </br>
@@ -193,24 +140,26 @@ to login/ authorize the user.
 - [x] CD to the project directory
 
 ```bash
-  cd SimilarityService
+  cd authService
 ```
 
 </br>
 
-- [x] Build the docker images
+- [x] Install the required modules
 
 ```bash
-  sudo docker-compose build
+  npm install
 ```
 
 </br>
 
-- [x] Start the Services
+- [x] Start server
 
 ```bash
-  sudo docker-compose up
+  nodemon run start
 ```
+
+</br>
 
 </br>
 
