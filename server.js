@@ -2,8 +2,9 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-const mongodbURI = require('.config/keys');
+const mongodbURI = require('./config/keys');
 
+const app = express();
 
 //Middleware: bodyparser
 app.use(
@@ -31,7 +32,7 @@ const port = process.env.PORT || 5000;
 
 
 // run the app
-app.listen(port, () => console.log("`Server running on port ${port}`"));
+app.listen(port, () => console.log(`Server up and running on port ${port} `));
 
 
 
