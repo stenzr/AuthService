@@ -6,8 +6,8 @@ module.exports = function validateRegisterInput(data) {
 
     // if the fields are empty convert them to empty string for validator function
 
-    data.email = !isEmpty(data.email) ? data.email : "";
-    data.password = !isEmpty(data.password) ? data.password : "";
+    data.email = !isEmpty(data.email) ? data.email : " ";
+    data.password = !isEmpty(data.password) ? data.password : " ";
 
 
     // check email
