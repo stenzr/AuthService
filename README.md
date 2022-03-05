@@ -59,6 +59,22 @@ to login/ authorize the user.
 
 </br>
 
+#### Response codes
+
+| User Story                                           | Response code | Type      | Response Message                           |
+| :--------------------------------------------------- | :------------ | :-------- | :----------------------------------------- |
+| New user enters correct details expects registration | `200`         | `success` | `"Succesfully Registered"`                 |
+| User Enters an email which is already registered     | `400`         | `failure` | `"Email already exists, try login"`        |
+| User leaves the name blank                           | `400`         | `failure` | `"Name cannot be empty"`                   |
+| User leaves the e-mail blank                         | `400`         | `failure` | `"E-mail cannot be empty"`                 |
+| User enters and invalid e-mail                       | `400`         | `failure` | `"Email is invalid"`                       |
+| User leaves the password blank                       | `400`         | `failure` | `"Password field is required"`             |
+| User leaves the confirm password blank               | `400`         | `failure` | `"Confirm password field is required"`     |
+| User Enters a password less than 8 characters        | `400`         | `failure` | `"Password must be at least 8 characters"` |
+| User enters different password, confirm password     | `400`         | `failure` | `"Passwords must match"`                   |
+
+</br>
+
 #### Sample Request
 
 ```json
@@ -90,6 +106,20 @@ to login/ authorize the user.
 | :--------- | :------- | :--------------------------------- |
 | `email`    | `string` | **Required**. email id of user     |
 | `password` | `string` | **Required**. password of the user |
+
+</br>
+
+#### Response codes
+
+| User Story                                    | Response code | Type      | Response Message                           |
+| :-------------------------------------------- | :------------ | :-------- | :----------------------------------------- |
+| New user enters correct details expects login | `200`         | `success` | `"User successfully logged in"`            |
+| User enters an email which is not registered  | `400`         | `failure` | `"Email not found"`                        |
+| User enters a wrong password                  | `400`         | `failure` | `"Password Incorrect"`                     |
+| User leaves the e-mail blank                  | `400`         | `failure` | `"E-mail cannot be empty"`                 |
+| User enters and invalid e-mail                | `400`         | `failure` | `"Email is invalid"`                       |
+| User leaves the password blank                | `400`         | `failure` | `"Password field is required"`             |
+| User Enters a password less than 8 characters | `400`         | `failure` | `"Password must be at least 8 characters"` |
 
 </br>
 
