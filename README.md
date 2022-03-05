@@ -1,10 +1,9 @@
 # AuthService
 
-A fullstack app using MERN stack:
+An authservice in Node JS:
 
 - **Database**: MongoDb
 - **Backend**: NodeJS and Express
-- **Frontend**: React
 
 to login/ authorize the user.
 
@@ -12,9 +11,8 @@ to login/ authorize the user.
 
 1. Register
 2. Log in
-3. Access protected pages only accessible to logged in users
-4. Stay logged in when they close the app or refresh the page
-5. Log out
+
+based on JWT tokens
 
 ---
 
@@ -30,9 +28,7 @@ to login/ authorize the user.
 
 **Server:** Express \
 **Language:** JavaScript \
-**Database:** MongoDb \
-**Frontend:** React JS \
-**State Management:** Redux
+**Database:** MongoDb
 
 <!---**Container:** Docker, Docker-Compose \ -->
 
