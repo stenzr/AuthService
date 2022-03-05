@@ -12,6 +12,7 @@ const validateLoginInput = require("../../validation/login");
 const User = require("../../models/User");
 
 // @route: POST /api/users/register
+// @desc : Register a new user
 router.post("/register", (req, res) => {
     const { errors, isValid } = validateRegisterInput(req.body);
 
@@ -22,12 +23,12 @@ router.post("/register", (req, res) => {
 
     User.findOne({ email: req.body.email }).then(user => {
         if (user) {
-            return res.status(400).json({ email: "Email already exists, try login" };
+            return res.status(400).json({ email: "Email already exists, try login" });
         } else {
             const newUser = new User({
-                name = req.body.name,
-                email = req.body.email,
-                password = req.body.password
+                name: req.body.name,
+                email: req.body.email,
+                password: req.body.password
 
             });
 
@@ -46,3 +47,63 @@ router.post("/register", (req, res) => {
         }
     });
 });
+
+// @route: POST /api/users/login
+// @desc : Login the user 
+router.post("/login", (req, res) => {
+    const { errors, isValid } = validateLoginInput(req.body);
+
+    //check valid input
+    if (!isValid) {
+        return res.status(400).json(errors);
+    }
+
+    //get email from request
+    const email = req.body.email;
+    const password = req.body.password;
+
+    //Check if user exists or not
+    User.findOne({ email: email }).then(user => {
+        if (!user) {
+            return res.status(400).json({ email: "Email not found" });
+        }
+
+        bcrypt.compare(password, user.password).then(isMatch => {
+            if (isMatch) {
+                // User matched
+                // Create JWT Payload
+                const payload = {
+                    id: user.id,
+                    name: user.name
+                };
+
+                //Sign token
+                jwt.sign(
+                    payload,
+                    keys.secretOrKey,
+                    {
+                        expiresIn: 31556926 //expiration time in seconds
+                    },
+                    (err, token) => {
+                        res.json({
+                            success: true,
+                            token: "Bearer " + token
+                        });
+                    }
+                );
+            } else {
+                return res
+                    .status(400)
+                    .json({ passwordincorrect: "Password incorrect" });
+            }
+        });
+
+
+
+    });
+
+});
+
+
+module.exports = router;
+
