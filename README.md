@@ -1,6 +1,8 @@
-# AuthService
+# BloggingAuthService
 
-An authservice in Node JS:
+A REST API service to expose endpoints that allow users to Register, Login and make authenticated Requests to acess the blog articles.
+
+1. An authservice REST API in Node JS:
 
 - **Database**: MongoDb
 - **Backend**: NodeJS and Express
@@ -13,6 +15,19 @@ to login/ authorize the user.
 2. Log in
 
 based on JWT tokens
+
+2. A Blogging Service REST API in Node JS:
+
+- **Database**: MongoDb
+- **Backend**: NodeJS and Express
+
+**API endpoints allows users to:**
+
+- Read,
+- Write,
+- Update,
+- Delete Blogs,
+- search Blogs by Author Name.
 
 ---
 

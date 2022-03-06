@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const post = require("../../models/Post");
-const verifytoken = require("../middleware/verifytoken");
+const verifytoken = require("../../middleware/verifytoken");
 const validpost = require("../../validation/posts");
 const validupdatepost = require("../../validation/updatepost");
 
