@@ -11,7 +11,7 @@ function verifyToken(req, res, next) {
        auth: false,
        message: "No token provided.",
      });
-   jwt.verify(token, secret.sectoken(), function (err, decoded) {
+   jwt.verify(token, secret.secretOrKey, function (err, decoded) {
      if (err) {
        return res.json({
          status: 500,
