@@ -9,10 +9,10 @@ A REST API service to expose endpoints that allow users to Register, Login and m
 
 to login/ authorize the user.
 
-**Our App allows users to:**
+**API endpoints allow users to:**
 
-1. Register
-2. Log in
+- Register
+- Log in
 
 based on JWT tokens
 
@@ -21,7 +21,7 @@ based on JWT tokens
 - **Database**: MongoDb
 - **Backend**: NodeJS and Express
 
-**API endpoints allows users to:**
+**API endpoints allow users to:**
 
 - Read,
 - Write,
